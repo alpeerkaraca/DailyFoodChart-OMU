@@ -4,6 +4,8 @@ using System.Net.Http;
 using System.Globalization;
 using System.Diagnostics;
 using System.Text;
+using static System.Net.WebRequestMethods;
+
 namespace Yemek{
     class Program
     {
@@ -24,7 +26,7 @@ namespace Yemek{
 
             doc.LoadHtml(html.Result);
 
-            var htmlNodes = doc.DocumentNode.SelectNodes("//div/table/tbody/tr");
+            var htmlNodes = doc.DocumentNode.SelectNodes("//*[@id=\"single\"]/div/div[3]/table/tbody/tr[3]/td[1]/table/tbody/tr");
             foodListHolder = new string[htmlNodes.Count];
             foreach(var htmlNode in htmlNodes) foodListHolder[i++] = htmlNode.InnerText;
             int index = Int32.Parse(date.Day.ToString()) + 2;
