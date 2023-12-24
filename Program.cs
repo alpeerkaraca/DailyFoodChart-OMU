@@ -26,13 +26,13 @@ namespace Yemek{
 
             doc.LoadHtml(html.Result);
 
-            var htmlNodes = doc.DocumentNode.SelectNodes("//*[@id=\"single\"]/div/div[3]/table/tbody/tr[3]/td[1]/table/tbody/tr");
+            var htmlNodes = doc.DocumentNode.SelectNodes("//*[@id='single']/div/div[3]/table/tbody/tr");
             foodListHolder = new string[htmlNodes.Count];
             foreach(var htmlNode in htmlNodes) foodListHolder[i++] = htmlNode.InnerText;
-            int index = Int32.Parse(date.Day.ToString()) + 2;
+            int index = Int32.Parse(date.Day.ToString());
             foodList = foodListHolder[index].Split("\n",System.StringSplitOptions.RemoveEmptyEntries);
 
-            Console.Write($"️🗓️Bugünün Tarihi: {date.ToLongDateString()}\nGünün Çorbası: {foodList[2]}\n🍱Ana Yemek: {foodList[3]}\n🍚Ara Yemek: {foodList[4]}");
+            Console.Write($"️🗓️Bugünün Tarihi: {foodList[1]}\n🍲Günün Çorbası: {foodList[2]}\n🍱Ana Yemek: {foodList[3]}\n🍚Ara Yemek: {foodList[4]}");
             Console.Write($"\n🍑Yan Ürün: {foodList[5]}\n\U0001f944İblis Aletta'dan Bol Afiyetlerle 🧑🏼‍🍳");
         /*
             Instagram: https://instagram.com/alpeerkaraca
@@ -46,4 +46,4 @@ namespace Yemek{
 
     }
 
-}       //Index = current day + 2 (cause of empty lines on html code)
+}
